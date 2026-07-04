@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>GenPhantomX - 絶対支配の特異点</title>
     <style>
         * {
@@ -20,6 +20,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
 
         #canvas {
@@ -99,6 +102,65 @@
             z-index: 10;
             font-family: 'Courier New', monospace;
         }
+
+        /* START ボタン */
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px 60px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #000;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: 3px solid #0ff;
+            border-radius: 15px;
+            cursor: pointer;
+            z-index: 100;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+            box-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        #startButton:hover {
+            box-shadow: 0 0 50px #00ffff, 0 0 100px #ff00ff;
+            transform: translate(-50%, -50%) scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 0, 255, 1);
+        }
+
+        #startButton:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        #startButton.hidden {
+            display: none;
+        }
+
+        /* エラーメッセージ */
+        #errorMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            font-size: 18px;
+            color: #ff0000;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            z-index: 100;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            display: none;
+            max-width: 80%;
+        }
+
+        #errorMessage.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -108,9 +170,16 @@
         <div>GenPhantomX - 幻神文明の顕現</div>
         <div>会長GPXレーベル 絶対神殿</div>
         <div style="margin-top: 10px; font-size: 12px;">
-            クリックでマイク入力開始 / スペースキーでリセット
+            スペースキーでリセット
         </div>
     </div>
+
+    <button id="startButton">
+        絶対支配領域を展開<br>
+        <span style="font-size: 14px;">( START )</span>
+    </button>
+
+    <div id="errorMessage"></div>
 
     <div id="title">
         <div>GENPHANTOMX</div>
