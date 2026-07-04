@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenPhantomX - 絶対支配の特異点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        #info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #0ff;
+            font-size: 14px;
+            text-shadow: 0 0 10px #0ff;
+            z-index: 10;
+            font-family: 'Courier New', monospace;
+        }
+
+        #frequency-display {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 300px;
+            height: 100px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid #0ff;
+            border-radius: 5px;
+            padding: 10px;
+            z-index: 10;
+        }
+
+        #frequency-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 80px;
+            gap: 3px;
+        }
+
+        .bar {
+            width: 8px;
+            background: linear-gradient(to top, #0ff, #00ff00, #ff00ff);
+            border-radius: 2px;
+            min-height: 2px;
+        }
+
+        #title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #0ff;
+            text-shadow: 0 0 20px #0ff, 0 0 40px #ff00ff;
+            z-index: 5;
+            pointer-events: none;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #ff00ff;
+            margin-top: 10px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        #status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #0ff;
+            font-size: 12px;
+            text-shadow: 0 0 10px #0ff;
+            z-index: 10;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div id="info">
+        <div>GenPhantomX - 幻神文明の顕現</div>
+        <div>会長GPXレーベル 絶対神殿</div>
+        <div style="margin-top: 10px; font-size: 12px;">
+            クリックでマイク入力開始 / スペースキーでリセット
+        </div>
+    </div>
+
+    <div id="title">
+        <div>GENPHANTOMX</div>
+        <div class="subtitle">〜 絶対支配の特異点 〜</div>
+    </div>
+
+    <div id="frequency-display">
+        <div id="frequency-bars"></div>
+    </div>
+
+    <div id="status">
+        <div>Status: Ready</div>
+        <div id="frequency-value">Frequency: 0 Hz</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
